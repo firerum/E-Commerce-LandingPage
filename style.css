@@ -1,0 +1,358 @@
+:root {
+    --dark-gray: hsl(0, 0%, 63%);
+    --black: hsl(0, 0%, 0%);
+    --white: hsl(0, 0%, 100%);
+    --deep-gray: hsl(0, 0%, 27%);
+    --desc-font: 9px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Spartan", sans-serif;
+    font-size: 12px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.main-links a {
+    color: #fff;
+    text-decoration: none;
+    padding-bottom: 8px;
+    position: relative;
+}
+
+.main-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scale(0);
+    transition: transform 300ms ease;
+}
+
+.main-links a:hover::after {
+    transform: scale(1);
+}
+
+h1,
+h2 {
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style: none;
+    margin-top: 7em;
+}
+
+li {
+    padding: 1em;
+}
+
+p {
+    margin-bottom: 3rem;
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+/* Header Styles */
+
+#banner {
+    position: relative;
+    overflow: hidden;
+}
+
+#banner #toggler {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 5;
+}
+
+#banner .hamburger {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    cursor: pointer;
+    pointer-events: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+#banner .hamburger > div {
+    width: 50px;
+    height: 3px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: transform 450ms ease;
+}
+
+#banner .hamburger > div::before,
+#banner .hamburger > div::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border-radius: inherit;
+    transition: transform 300ms ease;
+}
+
+#banner .hamburger > div::before {
+    top: -10px;
+}
+
+#banner #toggler:checked + .hamburger > div {
+    transform: rotate(135deg);
+}
+
+#banner #toggler:checked:hover + .hamburger > div {
+    transform: rotate(45deg);
+}
+
+#banner #toggler:checked + .hamburger > div::before,
+#banner #toggler:checked + .hamburger > div::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+#banner .main-links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    overflow-y: hidden;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: height 400ms ease,
+        opacity 350ms ease;
+}
+
+#banner #toggler:checked ~ .main-links {
+    height: 250px;
+    opacity: 1;
+}
+
+#banner > p {
+    position: absolute;
+    top: 43px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 3em;
+    z-index: 2;
+}
+
+/*The slider styles*/
+
+#banner > .slide-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+#banner .image {
+    display: none;
+}
+
+#banner .current {
+    display: block;
+}
+
+#banner .hero-message {
+    display: none;
+}
+
+#banner > .btn-wrapper {
+    position: absolute;
+    bottom: 4px;
+    right: 0;
+    width: 120px;
+    height: 60px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#banner .btn-wrapper > #next,
+#banner .btn-wrapper > #prev {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    height: 100%;
+}
+
+#banner > .btn-wrapper > #next:hover,
+#banner > .btn-wrapper > #prev:hover {
+    background-color: var(--deep-gray);
+}
+
+/* Main styles */
+
+section {
+    padding: 5em 2.5em;
+}
+
+section > div {
+    margin: 0 -2.5em;
+}
+
+.shop-now > h1 {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.shop {
+    display: block;
+    color: var(--deep-gray);
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    font-weight: 600;
+    position: relative;
+    text-decoration: none;
+}
+
+.shop::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 10px;
+    margin-bottom: inherit;
+    background-image: url("images/icon-arrow.svg");
+    background-repeat: no-repeat;
+}
+
+.about {
+    padding-bottom: 2em;
+}
+
+.about > h2 {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+
+/* Media queries */
+
+@media only screen and (min-width:700px) {
+    .container {
+        max-width: 1020px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 30% 40% 30%;
+    }
+
+    .shop {
+        margin-bottom: 4.5em;
+    }
+
+    #banner {
+        grid-column: 1 / 4;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-right: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    #banner > .slide-wrapper {
+        height: 350px;
+    }
+
+    #banner .current {
+        display: flex;
+        grid-gap: 50px;
+    }
+
+    #banner .current > picture {
+        width: 60%;
+    }
+
+    #banner .current > .hero-message {
+        width: 30%;
+        display: initial;
+        align-self: center;
+        font-size: var(--desc-font);
+    }
+
+    #banner > .btn-wrapper {
+        bottom: 0;
+        right: 30%;
+        width: 102px;
+    }
+
+    .shop-now {
+        display: none;
+    }
+
+    section {
+        margin: 0;
+        padding: 0 2.5em;
+    }
+
+    section.about {
+        padding: 5em 2.5em;
+        font-size: var(--desc-font);
+        align-self: center;
+        grid-column: 2/3
+    }
+
+    #banner #toggler,
+    #banner .hamburger {
+        display: none;
+    }
+
+    #banner > p {
+        left: 40px;
+        top: 36px;
+        transform: translate(0);
+        font-size: 2em;
+    }
+
+    #banner .main-links {
+        display: block;
+        height: 250px;
+        opacity: 1;
+        top: 35px;
+        left: 120px;
+        background-color: transparent;
+    }
+
+    ul {
+        margin-top: 0;
+        display: flex;
+    }
+}
